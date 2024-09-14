@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official site of IIT</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 1000px;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .card h2 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .card a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .card a:hover {
+            color: #2980b9;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Indian Institute of Technology</h1>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Students</h2>
+            <a href="{% url 'index' %}">Learn More</a>
+        </div>
+        <div class="card">
+            <h2>Contact</h2>
+            <a href="{% url 'contactus' %}">Get in Touch</a>
+        </div>
+        <div class="card">
+            <h2>About</h2>
+            <a href="{% url 'about' %}">Read More</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 IIT</p>
+    </footer>
+</body>
+</html>
+
