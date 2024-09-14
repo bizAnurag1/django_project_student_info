@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import ListView
 from .models import *
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
@@ -43,28 +42,28 @@ def sem_details(request, id):
 #     template_name = 'detailed_sem.html'
 #     context_object_name = "sem"
 
-class StudentCreateView(SuccessMessageMixin, CreateView):
+class StudentCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Student
     fields = "__all__" #or we can do it like this ['title', 'author', 'blog_text']
     template_name = 'new_student.html'
     success_message = "Student enrolled successfully"
     success_url = reverse_lazy('index')
 
-class StudentUpdateView(SuccessMessageMixin, UpdateView):
+class StudentUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Student
     fields = "__all__" #or we can do it like this ['title', 'author', 'blog_text']
     template_name = 'edit_student.html'
     success_message = "Student Info updated successfully"
     success_url = reverse_lazy('index')
 
-class SemesterCreateView(SuccessMessageMixin, CreateView):
+class SemesterCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Semester
     fields = "__all__" #['title', 'blog_text', 'image'] #or we can do it like this "__all__"
     template_name = 'add_semester.html'
     success_message = "Semester added successfully"
     success_url = reverse_lazy('index')
 
-class SemesterUpdateView(SuccessMessageMixin, UpdateView):
+class SemesterUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Semester
     fields = "__all__" #or we can do it like this ['title', 'author', 'blog_text']
     template_name = 'edit_marks.html'

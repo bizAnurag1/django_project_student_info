@@ -64,6 +64,30 @@
             margin: 0;
             font-size: 0.9em;
         }
+        .user-info {
+            display: inline-block;
+            margin-left: 15px;
+            color: White;
+            font-size: 1em;
+        }
+        .logout-form {
+            display: inline;
+            margin-left: 10px;
+        }
+        .logout-form input {
+            background-color: #34495e;
+            color: white;
+            border: none;
+            font-size: 1em;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .logout-form input:hover {
+            color: #ecf0f1;
+        }
+
     </style>
 </head>
 <body>
@@ -76,8 +100,20 @@
         <a href="{% url 'index' %}">Students</a> |
         <a href="{% url 'new_student' %}">Add New Student</a> |
         <a href="{% url 'about' %}">About</a> |
-        <a href="{% url 'contactus' %}">Contact</a> 
+        <a href="{% url 'contactus' %}">Contact</a> |
+        {% if user.is_authenticated %} 
+            <span class="user-info">
+                Hi {{user.username}}!
+                <form method="post" action="{% url 'logout' %}" class="logout-form">
+                    {% csrf_token %} 
+                    <input type="submit" value="Logout">
+                </form>
+            </span>
+        {% else %} 
+            <a href="{% url 'login' %}">Login!</a>
+        {% endif %} 
     </nav>
+    
 
     <div class="container">
         {% if messages %}
